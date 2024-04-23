@@ -1,3 +1,4 @@
 {
-  "scm.alwaysShowRepositories": true
+  "scm.alwaysShowRepositories": true,
+  "git.pruneOnFetch": true
 }
