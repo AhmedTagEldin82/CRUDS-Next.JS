@@ -17,11 +17,19 @@ interface ProductState {
   products: Product[];
 }
 
-const storedProducts = localStorage.getItem("products");
-const parsedProducts = storedProducts ? JSON.parse(storedProducts) : [];
-const initialState: ProductState = {
-  products: parsedProducts,
-};
+let initialState: ProductState;
+
+if (typeof window !== "undefined") {
+  const storedProducts = localStorage.getItem("products");
+  const parsedProducts = storedProducts ? JSON.parse(storedProducts) : [];
+  initialState = {
+    products: parsedProducts,
+  };
+} else {
+  initialState = {
+    products: [],
+  };
+}
 
 const productSlice = createSlice({
   name: "products",
